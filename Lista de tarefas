@@ -1,0 +1,47 @@
+# todo.py
+
+tarefas = []
+
+def adicionar_tarefa(tarefa):
+    tarefas.append(tarefa)
+    print(f"Tarefa '{tarefa}' adicionada!")
+
+def listar_tarefas():
+    if tarefas:
+        print("Suas tarefas são:")
+        for i, tarefa in enumerate(tarefas, 1):
+            print(f"{i}. {tarefa}")
+    else:
+        print("Você não tem tarefas.")
+
+def remover_tarefa(index):
+    if 0 <= index < len(tarefas):
+        removida = tarefas.pop(index)
+        print(f"Tarefa '{removida}' removida!")
+    else:
+        print("Índice inválido.")
+
+while True:
+    print("\n1. Adicionar Tarefa")
+    print("2. Listar Tarefas")
+    print("3. Remover Tarefa")
+    print("4. Sair")
+
+    opcao = input("Escolha uma opção: ")
+
+    if opcao == "1":
+        tarefa = input("Digite a tarefa: ")
+        adicionar_tarefa(tarefa)
+    elif opcao == "2":
+        listar_tarefas()
+    elif opcao == "3":
+        try:
+            index = int(input("Digite o número da tarefa para remover: ")) - 1
+            remover_tarefa(index)
+        except ValueError:
+            print("Por favor, insira um número válido.")
+    elif opcao == "4":
+        print("Saindo...")
+        break
+    else:
+        print("Opção inválida, tente novamente.")
